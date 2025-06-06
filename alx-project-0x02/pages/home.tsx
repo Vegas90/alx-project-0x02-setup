@@ -1,39 +1,55 @@
-//add basic content with tailwind css
-import React from "react";
-import Card from "../components/common/Card"; 
+import React, { useState } from "react";
+import Card from "../components/common/Card";
+import PostModal from "../components/common/PostModal";
 
 const Home: React.FC = () => {
-    return (
-        <div className="min-h-screen bg-gray-50">
-        <main className="container mx-auto px-4 py-8">
-            <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">
-            Welcome to My Next.js Application
-            </h1>
-            <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto">
-            This is a comprehensive Next.js project built with TypeScript and
-            Tailwind CSS. Navigate through the application to explore different
-            features and components.
-            </p>
+  // State to control visibility of the modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-     {/* Cards Section */}
-    <section className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card
-            title="Card Title"
-            content="This is a reusable card component that can be used to display information in a structured format.">            
-            </Card>
-        <Card
-            title="Another Card"    
-            content="You can use this card to showcase different content, such as articles, products, or any other information you want to present.">
-            </Card>
+  // State to store submitted posts (array of objects with title and content)
+  const [posts, setPosts] = useState<{ title: string; content: string }[]>([]);
 
-    </section>
-        </main>
+  // Function to add a new post to the state
+  const handleAddPost = (data: { title: string; content: string }) => {
+    setPosts([...posts, data]); // Adds the new post to the existing list
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <main className="container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold text-center text-gray-800 mb-4">
+          Welcome to My Next.js Application
+        </h1>
+        <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-8">
+          This is a comprehensive Next.js project built with TypeScript and Tailwind CSS.
+        </p>
+
+        {/* Button to open modal */}
+        <div className="flex justify-center mb-6">
+          <button
+            onClick={() => setIsModalOpen(true)} // Opens the modal
+            className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          >
+            Add New Post
+          </button>
         </div>
 
+        {/* Posts rendered as cards */}
+        <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post, index) => (
+            <Card key={index} title={post.title} content={post.content} />
+          ))}
+        </section>
+      </main>
 
-    );
-}
-//use the Card component to display a card with title and content
-
+      {/* Modal component */}
+      <PostModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)} // Function to close the modal
+        onSubmit={handleAddPost} // Function to receive form data
+      />
+    </div>
+  );
+};
 
 export default Home;

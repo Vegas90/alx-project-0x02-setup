@@ -5,4 +5,6 @@ This project is a comprehensive introduction to setting up and working with Next
 ## Installation 
 npx create-next-app@latest alx-project-0x02 --typescript --eslint --tailwind
 
+### run server
+npm run dev
 
