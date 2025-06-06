@@ -1,6 +1,6 @@
 //add basic content with tailwind css
 import React from "react";
-import Card from "amos/components/common/Card"; 
+import Card from "../components/common/Card"; 
 
 const Home: React.FC = () => {
     return (
