@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Card from "../components/common/Card";
-import PostModal from "../components/common/PostModal";
-import Button from "../components/common/Button";
-import Header from "../components/layout/Header";
+import PostModal from "@/components/common/PostModal";
+import Button from "@/components/common/Button";
+import Header from "@/components/layout/Header";
 
 
 const Home: React.FC = () => {
