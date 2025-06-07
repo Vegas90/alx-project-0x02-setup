@@ -17,8 +17,16 @@ const PostsPage: React.FC = () => {
         // Optional: limit number of posts
         const slicedPosts = data.slice(0, 10);
 
+        // Define the type for posts returned by the API
+        interface ApiPost {
+          userId: number;
+          id: number;
+          title: string;
+          body: string;
+        }
+
         // Add userId to match PostCard requirements
-        const formattedPosts = slicedPosts.map((post: any) => ({
+        const formattedPosts = slicedPosts.map((post: ApiPost) => ({
           title: post.title,
           content: post.body,
           userId: post.userId,
