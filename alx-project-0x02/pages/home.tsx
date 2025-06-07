@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Card from "../components/common/Card";
 import PostModal from "../components/common/PostModal";
+import Button from "../components/common/Button";
+
+
 
 const Home: React.FC = () => {
   // State to control visibility of the modal
@@ -48,7 +51,13 @@ const Home: React.FC = () => {
         onClose={() => setIsModalOpen(false)} // Function to close the modal
         onSubmit={handleAddPost} // Function to receive form data
       />
+      <Button size="medium" shape="rounded-md" onClick={() => alert("Hello!")}>
+            Click Me
+          </Button>
+
     </div>
+
+    
   );
 };
 
