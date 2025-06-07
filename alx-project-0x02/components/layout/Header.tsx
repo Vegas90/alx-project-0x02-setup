@@ -8,9 +8,9 @@ const Header: React.FC = () => {
     <header className="bg-gray-800 text-white p-4">
       <nav className="container mx-auto flex justify-between">
         <div className="text-lg font-bold">My App</div>
-          <Link href="home" className="mr-4 hover:underline">Home</Link>
-          <Link href="about" className="hover:underline">About</Link>
-          <Link href="posts" className="mr-4 hover:underline">posts</Link>
+          <Link href="/home" className="mr-4 hover:underline">Home</Link>
+          <Link href="/about" className="hover:underline">About</Link>
+          <Link href="/posts" className="mr-4 hover:underline">posts</Link>
       </nav>
     </header>
   );
